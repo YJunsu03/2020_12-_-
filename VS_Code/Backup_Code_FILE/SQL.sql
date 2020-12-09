@@ -1,10 +1,10 @@
 create table kda( 
   id int,
   champ_name varchar(15) unique not null, 
-  k int not null check (k >= 0),
-  death int not null check (death >= 0),
-  assist int not null check (assist >= 0),
-  cs int not null check (cs >= 0),
+  k int not null check (k > 0),
+  death int not null check (death > 0),
+  assist int not null check (assist > 0),
+  cs int not null check (cs > 0),
   primary key (id)
 ); 
 -- 테이블 생성
