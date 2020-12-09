@@ -1,4 +1,4 @@
-create table test( 
+create table kda_info( 
   id int,
   champ_name varchar(15) unique not null, 
   k int not null check (k >= 0),
@@ -62,6 +62,8 @@ update tierlist set victory = 'Win' where lank = 'BRONZE';
 
 create table ordinal_id (
   id int,
+  ordinal int,
+  example varchar(15),
   PRIMARY KEY (id)
 );
 INSERT INTO ordinal_id VALUES (11);
@@ -89,7 +91,197 @@ insert into tierList values(401, 'PLATINUM', 2, 'December');
 insert into tierList values(501, 'DIAMOND', 1, 'December');
 insert into tierList values(601, 'Challenger', 0, 'December');
 
-select list.id, list.champ_name, list.tier, victory tierList.lank, Tirelist.tier
-from list, tierList
-where id.champ_name = Name,
-      
+select ordinal_id.id, list.champ_name, list.victory 
+from ordinal_id
+inner join list ON ordinal_id.id = list.id;  
+-- 기본 이너 조인 (꼭 겹치는(연관있는) 컬럼 데이터랑 이어야 나머지 컬럼 추출 가능.)     
+
+-------------------------- 실습 테이블 --------------------------
+
+CREATE TABLE BASKET_A
+(
+	ID INT PRIMARY KEY,
+	FRUIT VARCHAR (100) NOT NULL
+);
+
+INSERT INTO BASKET_A
+(ID,FRUIT)
+VALUES
+(1,'APPLE'),
+(2,'ORANGE'),
+(3,'BANANA'),
+(4,'CUCUMBER');
+
+COMMIT;
+
+CREATE TABLE BASKET_B
+(
+	ID INT PRIMARY KEY,
+	FRUIT VARCHAR (100) NOT NULL
+)
+
+INSERT INTO BASKET_B
+(ID,FRUIT)
+VALUES
+(1,'ORANGE'),
+(2,'APPLE'),
+(3,'WATERMELON'),
+(4,'PEAR');
+
+COMMIT;
+
+CREATE TABLE EMPLOYEE(
+	EMPLOYEE_ID INT PRIMARY KEY,
+	FIRST_NAME VARCHAR (255) NOT NULL,
+	LAST_NAME VARCHAR (255) NOT NULL,
+	MANAGER_ID INT,
+	FOREIGN KEY (MANAGER_ID)
+	REFERENCES EMPLOYEE (EMPLOYEE_ID)
+	ON DELETE CASCADE
+)
+
+insert into EMPLOYEE (
+	EMPLOYEE_ID,
+	FIRST_NAME,
+	LAST_NAME,
+	MANAGER_ID
+)
+values
+(1, 'Windy','Hays',Null),
+(2, 'Ava','Christensen',1),
+(3, 'Hassan','Conner',1),
+(4, 'Anna','Reeves',2),
+(5, 'Sau','Norman',2),
+(6, 'Kelsie','Hays',3),
+(7, 'Tory','Goff',3),
+(8, 'Salley','Lester',3)
+
+commit;
+
+CREATE TABLE
+IF NOT EXISTS DEPARTMENTS
+(
+	DEPARTMENT_ID SERIAL PRIMARY KEY,
+	DEPARTMENT_NAME VARCHAR (255) NOT NULL
+)
+
+INSERT
+	INTO
+	DEPARTMENTS (DEPARTMENT_NAME)
+VALUES ('Sales'),
+('Marketing'),
+('HR'),
+('IT'),
+('Production');
+
+commit;
+
+CREATE TABLE
+IF NOT EXISTS EMPLOYEES
+(
+	EMPLOYEE_ID SERIAL PRIMARY KEY,
+	EMPLOYEE_NAME VARCHAR (255),
+	DEPARTMENT_ID INTEGER
+)
+
+INSERT
+	INTO
+	EMPLOYEES (EMPLOYEE_NAME,
+	DEPARTMENT_ID)
+VALUES 
+('Better Nicholson',1),
+('Christian Gable',1),
+('Joe Swank',2),
+('Fred Costner',3),
+('Sandra Kilmer',4),
+('Julia Mcqueen',NULL);
+
+commit;
+
+CREATE TABLE CROSS_T1
+(
+	LABEL CHAR(1) PRIMARY KEY
+)
+
+INSERT INTO CROSS_T1 (LABEL)
+VALUES
+('A'),
+('B');
+
+COMMIT;
+
+CREATE TABLE CROSS_T2
+(
+	SCORE INT PRIMARY KEY
+)
+
+INSERT INTO CROSS_T2 (SCORE)
+VALUES
+(1),
+(2),
+(3);
+
+COMMIT;
+
+CREATE TABLE CATEGORIES
+(
+	CATEGORY_ID SERIAL PRIMARY KEY,
+	CATEGORY_NAME VARCHAR (255) NOT NULL
+)
+
+INSERT INTO CATEGORIES(CATEGORY_NAME)
+VALUES
+('Smart Phone'),
+('Laptop'),
+('Tablet');
+
+commit;
+
+CREATE TABLE PRODUCTS
+(
+	PRODUCT_ID SERIAL PRIMARY KEY,
+	PRODUCT_NAME VARCHAR (255) NOT NULL,
+	CATEGORY_ID INT NOT NULL,
+	FOREIGN KEY (CATEGORY_ID)
+	REFERENCES CATEGORIES (CATEGORY_ID)
+)
+
+INSERT INTO PRODUCTS
+(PRODUCT_NAME,CATEGORY_ID)
+VALUES
+('iPhone',1),
+('Samsung Galaxy',1),
+('HP Elite',2),
+('Lenovo Thinkpad',2),
+('iPad',3),
+('Kindle Fire',3)
+
+commit;
+
+CREATE TABLE SALES
+(
+	BRAND VARCHAR NOT NULL,
+	SEGMENT VARCHAR NOT NULL,
+	QUANTITY INT NOT NULL,
+	PRIMARY KEY (BRAND,SEGMENT)
+)
+
+INSERT INTO  SALES (BRAND,SEGMENT,QUANTITY)
+VALUES 
+('ABC','Premium',100),
+('ABC','Basic',200),
+('XYZ','Premium',100),
+('XYZ','Basic',300); 
+
+commit;
+
+-- 실습 시작 --
+SELECT
+	A.ID ID_A,
+	A.FRUIT FRUIT_A,
+	B.ID ID_B,
+	B.FRUIT FRUIT_B
+FROM
+	BASKET_A A
+INNER JOIN BASKET_B B ON
+	A.FRUIT = B.FRUIT;
