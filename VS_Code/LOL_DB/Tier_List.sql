@@ -1,1 +1,28 @@
 -- 챔피언 티어 리스트 테이블
+CREATE TABLE Tier_List (
+    id int,
+    Tier int not null,
+    Lank varchar(20) not null,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO Tier_List VALUES (1, 0, 'CHALLENGER');
+INSERT INTO Tier_List VALUES (2, 0, 'CHALLENGER');
+INSERT INTO Tier_List VALUES (3, 0, 'CHALLENGER');
+INSERT INTO Tier_List VALUES (4, 1, 'DIAMOND');
+INSERT INTO Tier_List VALUES (5, 1, 'DIAMOND');
+INSERT INTO Tier_List VALUES (6, 1, 'DIAMOND');
+INSERT INTO Tier_List VALUES (7, 2, 'PLATINUM');
+INSERT INTO Tier_List VALUES (8, 2, 'PLATINUM');
+INSERT INTO Tier_List VALUES (9, 2, 'PLATINUM');
+INSERT INTO Tier_List VALUES (10, 3, 'GOLD');
+INSERT INTO Tier_List VALUES (11, 3, 'GOLD')
+INSERT INTO Tier_List VALUES (12, 3, 'GOLD');
+INSERT INTO Tier_List VALUES (13, 4, 'SILVER');
+INSERT INTO Tier_List VALUES (14, 4, 'SILVER');
+INSERT INTO Tier_List VALUES (15, 4, 'SILVER');
+INSERT INTO Tier_List VALUES (16, 5, 'BRONZE');
+INSERT INTO Tier_List VALUES (17, 5, 'BRONZE');
+INSERT INTO Tier_List VALUES (18, 5, 'BRONZE');
+INSERT INTO Tier_List VALUES (19, 6, 'Unkwown');
+INSERT INTO Tier_List VALUES (20, 6, 'Unkwown');
