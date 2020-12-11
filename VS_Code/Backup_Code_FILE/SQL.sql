@@ -31,6 +31,10 @@ insert into test values(19, 'Alistar', 2, 4, 2, 53);
 insert into test values(20, 'Akali', 4, 2, 3, 92);
 -- 데이터 삽입
 
+create table jobK (like "jobKind" including all);
+insert into newtable ( select * from "oldtable");
+-- 다른 스키마로 테이블 복사
+
 alter table test drop column(victory);
 -- 컬럼 안에 데이터 내용만 삭제(했는데 true 데이터는 날아가고 false 는 남음..)
 
@@ -59,6 +63,29 @@ update tierlist set victory = 'Win' where lank = 'BRONZE';
 -- tierlist 테이블에 lank 컬럼이 'BRONZE' 일때 victory 컬럼에 Win 값을 넣어준다.
 -- update 조건에 따른 코멘트 입력
 -- boolean 값은 동시입력 x, 각 컬럼이름등이 '정확히' 똑같아야함.
+
+SELECT CC.COLUMN_NAME AS COLUMN_NAME
+  FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS       TC
+      ,INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE CC
+ WHERE TC.TABLE_CATALOG   = '데이터베이스명'
+   AND TC.TABLE_NAME      = '테이블명'
+   AND TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
+   AND TC.TABLE_CATALOG   = CC.TABLE_CATALOG
+   AND TC.TABLE_SCHEMA    = CC.TABLE_SCHEMA
+   AND TC.TABLE_NAME      = CC.TABLE_NAME
+   AND TC.CONSTRAINT_NAME = CC.CONSTRAINT_NAME
+-- PK 조회
+SELECT CC.COLUMN_NAME AS COLUMN_NAME
+  FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS       TC
+      ,INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE CC
+ WHERE TC.TABLE_CATALOG   = 'Task'
+   AND TC.TABLE_NAME      = 'jobEl'
+   AND TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
+   AND TC.TABLE_CATALOG   = CC.TABLE_CATALOG
+   AND TC.TABLE_SCHEMA    = CC.TABLE_SCHEMA
+   AND TC.TABLE_NAME      = CC.TABLE_NAME
+   AND TC.CONSTRAINT_NAME = CC.CONSTRAINT_NAME
+   ----------------------------------------------------
 
 create table ordinal_id (
   id int,
