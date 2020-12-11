@@ -32,7 +32,7 @@ insert into test values(20, 'Akali', 4, 2, 3, 92);
 -- 데이터 삽입
 
 create table jobK (like "jobKind" including all);
-insert into newtable ( select * from "oldtable");
+insert into jobk ( select * from "jobKind");
 -- 다른 스키마로 테이블 복사
 
 alter table test drop column(victory);
