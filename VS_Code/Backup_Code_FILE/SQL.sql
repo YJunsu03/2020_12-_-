@@ -31,6 +31,30 @@ insert into test values(19, 'Alistar', 2, 4, 2, 53);
 insert into test values(20, 'Akali', 4, 2, 3, 92);
 -- 데이터 삽입
 
+create table functions ( 
+	id int, 
+	name varchar(20) NOT NULL,
+	Description varchar(150) not null, 
+	PRIMARY KEY (id)
+	);
+-- 함수 테이블 생성 
+CREATE OR REPLACE FUNCTION add(a INTEGER, b INTEGER)
+RETURNS integer AS $$ BEGIN RETURN a+b;
+END; $$
+LANGUAGE PLPGSQL;
+-- add 함수 생성
+CREATE OR REPLACE FUNCTION gethl(
+	v1 NUMERIC,
+	v2 NUMERIC,
+	OUT high_value NUMERIC,
+	OUT low_value NUMERIC)
+AS
+$$ BEGIN	
+	high_value := GREATEST(v1, v2);
+	low_value := LEAST(v1, v2);
+END; $$
+LANGUAGE PLPGSQL;
+
 create table jobK (like "jobKind" including all);
 insert into jobk ( select * from "jobKind");
 -- 다른 스키마로 테이블 복사
@@ -60,6 +84,13 @@ ALTER TABLE 테이블명 RENAME COLUMN 현재컬럼명 TO 새로운컬럼명;
 \dt 
 -- 해당 DB? 스키마? 내에 있는 모든 테이블 리스트 조회
 
+CREATE [OR REPLACE] FUNCTION add (arguments)
+RETURNS integer AS $total$
+DECLARE
+	total integer;
+BEGIN
+	SELECT count(*) into total FROM 
+
 update tierlist set lank = 'CHALLENGER' where lank = 'Challenger'; 
 -- tierlist 테이블에 lank 컬럼이 'Challenger' 일때 lank 컬럼에 Challenger를CHALLENGER 로 바꿔준다.
 
@@ -67,14 +98,6 @@ update tierlist set victory = 'Win' where lank = 'BRONZE';
 -- tierlist 테이블에 lank 컬럼이 'BRONZE' 일때 victory 컬럼에 Win 값을 넣어준다.
 -- update 조건에 따른 코멘트 입력
 -- boolean 값은 동시입력 x, 각 컬럼이름등이 '정확히' 똑같아야함.
-
--- sum 함수
-CREATE add(a INTEGER, b INTEGER)
-RETURNS INTEGER AS
-$$ BEGIN
-	RETURN a+b;
-END; $$
-LANGUAGE PLPGSQL;
 
 SELECT CC.COLUMN_NAME AS COLUMN_NAME
   FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS       TC
