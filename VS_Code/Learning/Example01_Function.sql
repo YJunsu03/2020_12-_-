@@ -55,8 +55,14 @@ END; $$
 LANGUAGE plpgsql;
 ----------------------------------------------------------
 -- ROLLUP 함수 예제
-SELECT joben.id, joben.name, 
-    jobmp.jobmp, jobmp.ac
-FROM joben 
-JOIN jobmp
-ON joben.id = jobmp.id
+SELECT jobmp, jobac
+FROM jobmp
+GROUP BY 
+    ROLLUP(jobmp.jobmp, jobmp.jobac);
+-- ADD 함수
+CREATE add(a INTEGER, b INTEGER)
+RETURNS INTEGER AS
+$$ BEGIN
+	RETURN a+b;
+END; $$
+LANGUAGE PLPGSQL;
