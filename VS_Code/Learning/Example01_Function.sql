@@ -54,3 +54,9 @@ BEGIN
 END; $$ 
 LANGUAGE plpgsql;
 ----------------------------------------------------------
+-- ROLLUP 함수 예제
+SELECT joben.id, joben.name, 
+    jobmp.jobmp, jobmp.ac
+FROM joben 
+JOIN jobmp
+ON joben.id = jobmp.id

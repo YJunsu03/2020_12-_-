@@ -3,25 +3,25 @@
 -- 설명하기
 CREATE DATABASE Task;
 -- Task(과제) DB 생성
-CREATE TABLE jobKind (
+CREATE TABLE jobEn (
     id int,
     name varchar(15) unique not null,
     description varchar(50) not null, 
     PRIMARY KEY (id)
 );
- INSERT INTO jobkind VALUES(1, 'DBA', '데이터베이스를 관리하는 직업');
- INSERT INTO jobkind VALUES(2, 'POLICE', '시민의 치안을 지키는 직업');
- INSERT INTO jobkind VALUES(3, 'Teacher', '학생들을 교육하는 직업');
- INSERT INTO jobkind VALUES(4, 'FIREFIGHTER', '화재 발생시 가장 먼저 출동하는 직업.');
- INSERT INTO jobkind VALUES(5, 'JUDGE', '죄를 판결하는 직업.');
+ INSERT INTO joben VALUES(1, 'DBA', '데이터베이스를 관리하는 직업');
+ INSERT INTO joben VALUES(2, 'POLICE', '시민의 치안을 지키는 직업');
+ INSERT INTO joben VALUES(3, 'Teacher', '학생들을 교육하는 직업');
+ INSERT INTO joben VALUES(4, 'FIREFIGHTER', '화재 발생시 가장 먼저 출동하는 직업.');
+ INSERT INTO joben VALUES(5, 'JUDGE', '죄를 판결하는 직업.');
  
- -- update jobkind set name='DBA' where name='DBM';
+ -- update joben set name='DBA' where name='DBM';
 
  SELECT CC.COLUMN_NAME AS COLUMN_NAME
   FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS       TC
       ,INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE CC
  WHERE TC.TABLE_CATALOG   = 'task'
-   AND TC.TABLE_NAME      = 'jobkind'
+   AND TC.TABLE_NAME      = 'joben'
    AND TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
    AND TC.TABLE_CATALOG   = CC.TABLE_CATALOG
    AND TC.TABLE_SCHEMA    = CC.TABLE_SCHEMA
@@ -52,7 +52,7 @@ CREATE TABLE jobFo(
  INSERT INTO jobfo VALUES(4, '보편적');
  INSERT INTO jobfo VALUES(5, '희망적');
 --------------------------------------------------------
-CREATE TABLE jobEl(
+CREATE TABLE jobEv(
 -- 평가 (evaluate)
     id int,
     name varchar(20) not null,
@@ -71,9 +71,9 @@ alter table jobel drop PRIMARY KEY (id);
  alter table jobel alter column id type varchar(15);
 -------------------------------------------------------
 -- 조인
-select jobfo.id, jobel.name, jobkind.description,
+select jobfo.id, jobel.name, joben.description,
         jobmp.jobac
 from jobfo
 join jobel on jobel.id = jobfo.id
-join jobkind on jobel.id = jobkind.id
-join jobmp on jobmp.id = jobkind.id; 
+join joben on jobel.id = joben.id
+join jobmp on jobmp.id = joben.id; 

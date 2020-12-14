@@ -44,6 +44,7 @@ update test set victory=False where (k+assist)/death <= 3;
 
 alter table test add victory boolean;
 alter table test add Tire char(1);
+-- 추가 
 
 ALTER TABLE 테이블명 ALTER COLUMN 컬럼명 TYPE 원하는 타입
 ALTER TABLE tierlist ALTER COLUMN victory TYPE boolean
@@ -56,6 +57,9 @@ alter table <TABLE> RENAME TO <NEW TABLE>
 ALTER TABLE 테이블명 RENAME COLUMN 현재컬럼명 TO 새로운컬럼명;
 -- 컬럼 이름 변경
 
+\dt 
+-- 해당 DB? 스키마? 내에 있는 모든 테이블 리스트 조회
+
 update tierlist set lank = 'CHALLENGER' where lank = 'Challenger'; 
 -- tierlist 테이블에 lank 컬럼이 'Challenger' 일때 lank 컬럼에 Challenger를CHALLENGER 로 바꿔준다.
 
@@ -63,6 +67,14 @@ update tierlist set victory = 'Win' where lank = 'BRONZE';
 -- tierlist 테이블에 lank 컬럼이 'BRONZE' 일때 victory 컬럼에 Win 값을 넣어준다.
 -- update 조건에 따른 코멘트 입력
 -- boolean 값은 동시입력 x, 각 컬럼이름등이 '정확히' 똑같아야함.
+
+-- sum 함수
+CREATE add(a INTEGER, b INTEGER)
+RETURNS INTEGER AS
+$$ BEGIN
+	RETURN a+b;
+END; $$
+LANGUAGE PLPGSQL;
 
 SELECT CC.COLUMN_NAME AS COLUMN_NAME
   FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS       TC
@@ -78,15 +90,26 @@ SELECT CC.COLUMN_NAME AS COLUMN_NAME
 SELECT CC.COLUMN_NAME AS COLUMN_NAME
   FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS       TC
       ,INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE CC
- WHERE TC.TABLE_CATALOG   = 'Task'
-   AND TC.TABLE_NAME      = 'jobEl'
+ WHERE TC.TABLE_CATALOG   = 'task'
+   AND TC.TABLE_NAME      = 'jobEn'
    AND TC.CONSTRAINT_TYPE = 'PRIMARY KEY'
    AND TC.TABLE_CATALOG   = CC.TABLE_CATALOG
    AND TC.TABLE_SCHEMA    = CC.TABLE_SCHEMA
    AND TC.TABLE_NAME      = CC.TABLE_NAME
    AND TC.CONSTRAINT_NAME = CC.CONSTRAINT_NAME
    ----------------------------------------------------
-
+   SELECT kcu.table_name AS child_table,
+		kcu.table_schema AS child_schema,
+		kcu.column_name AS child_column,
+		kcu.constraint_name AS child_constraint
+	FROM information_schema.table_constraints TC	
+		JOIN information_schema.key_column_usage kcu ON tc.constraint_name = 
+	kcu.constraint_name
+		JOIN information_schema.constraint_column_usage ccu ON ccu.constraint_name = 
+	tc.CONSTRAINT_NAME
+	WHERE tc.constraint_type = 'PRIMARY KEY' and ccu.table_name = 'jobmp'
+	GROUP BY kcu.table_name , kcu.table_schema, kcu.column_name, kcu.constraint_name;
+--------------------------------------------------------
 create table ordinal_id (
   id int,
   ordinal int,
