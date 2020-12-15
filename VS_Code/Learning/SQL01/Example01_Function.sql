@@ -21,12 +21,12 @@ LANGUAGE PLPGSQL;
 CREATE OR REPLACE FUNCTION getmaxmin(
     v1 NUMERIC, 
     v2 NUMERIC,
-    OUT min_value NUMERIC,
-    OUT max_value NUMERIC)
+    OUT High_value NUMERIC,
+    OUT Low_value NUMERIC)
 AS 
 $$ BEGIN
-    min_value := GREATEST(v1, v2);
-    max_value := LEAST(v1, v2);
+    High_value := GREATEST(v1, v2);
+    Low_value := LEAST(v1, v2);
 END; $$
 LANGUAGE PLPGSQL;
 ------------------------------------------------------------
