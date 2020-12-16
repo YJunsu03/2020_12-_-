@@ -120,6 +120,15 @@ SELECT CC.COLUMN_NAME AS COLUMN_NAME
    AND TC.TABLE_SCHEMA    = CC.TABLE_SCHEMA
    AND TC.TABLE_NAME      = CC.TABLE_NAME
    AND TC.CONSTRAINT_NAME = CC.CONSTRAINT_NAME
+--------------------------------------------------------------
+   ALTER TABLE 테이블이름
+
+	ADD [CONSTRAINT 제약조건이름]
+
+	FOREIGN KEY (필드이름)
+
+	REFERENCES 테이블이름 (필드이름)
+	-- 외래키 추가 --
    ----------------------------------------------------
    SELECT kcu.table_name AS child_table,
 		kcu.table_schema AS child_schema,
