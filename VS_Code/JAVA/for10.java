@@ -6,13 +6,13 @@ public class for10 {
         
         int N = in.nextInt();
         int X = in.nextInt();
-        int arr[] = new int[N];
+        int arr[] = new int[N]; // arr에 배열 크기 = N 
         
-        for (int i = 0; i < N; i++) {
-            arr[i] = in.nextInt();
+        for (int i = 0; i < N; i++) { //N 보다 작을때까지 반복
+            arr[i] = in.nextInt(); //N 의 수 만큼 입력
         }
 
-        in.close();
+        in.close(); //
       
         int i;
         for (i = 0; i < N; i++) {
