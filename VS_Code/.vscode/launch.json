@@ -1,0 +1,140 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch GUGUDAN",
+            "request": "launch",
+            "mainClass": "GUGUDAN",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch GUGUDAN_Jaejun_ver",
+            "request": "launch",
+            "mainClass": "GUGUDAN_Jaejun_ver",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch StarExample01",
+            "request": "launch",
+            "mainClass": "StarExample01",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch StarExample02",
+            "request": "launch",
+            "mainClass": "StarExample02",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch euler_1",
+            "request": "launch",
+            "mainClass": "euler_1",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch euler_2",
+            "request": "launch",
+            "mainClass": "euler_2",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch fibonacciex",
+            "request": "launch",
+            "mainClass": "fibonacciex",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for10",
+            "request": "launch",
+            "mainClass": "for10",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for10_1",
+            "request": "launch",
+            "mainClass": "for10_1",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for10_jaejun_ver",
+            "request": "launch",
+            "mainClass": "for10_jaejun_ver",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for2",
+            "request": "launch",
+            "mainClass": "for2",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for3",
+            "request": "launch",
+            "mainClass": "for3",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for4",
+            "request": "launch",
+            "mainClass": "for4",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for5",
+            "request": "launch",
+            "mainClass": "for5",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for6",
+            "request": "launch",
+            "mainClass": "for6",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch for7",
+            "request": "launch",
+            "mainClass": "for7",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch newScanner1",
+            "request": "launch",
+            "mainClass": "newScanner1",
+            "projectName": "VS_Code_dcbb4d23"
+        },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "VS_Code_dcbb4d23"
+        }
+    ]
+}
