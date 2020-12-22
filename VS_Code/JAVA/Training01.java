@@ -1,18 +1,24 @@
-// import java.io.BufferedReader;
-// import java.io.IOException;
-// import java.io.InputStreamReader;
-// import java.util.StringTokenizer;
+import java.util.Scanner;
 
-// public class Training01 {
-//     public static void main(String[] args) throws IOException {
-//          BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//          String etc[] = br.readLine().split(" ");
+public class Training01 {
+    public static void main(String[] args) {
+        int s = 0;
+        System.out.println(jaejun(s));
 
-//          int A = Integer.parseInt(etc.nextToken());
-//          int B = Integer.parseInt(etc.nextToken());
+    }
 
-//         System.out.println(A+B);
+    public static int jaejun(int jun) {
 
-//     }
+        Scanner sc = new Scanner(System.in);
 
-// }
+        int input = sc.nextInt();
+        int sum=0;
+        for(int i=1; i<input; i++){
+            sum = i+input;
+            jun += sum;
+            System.out.println(jun);
+        }
+        return jun;
+    }
+        
+}
