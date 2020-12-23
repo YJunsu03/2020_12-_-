@@ -1,4 +1,4 @@
-package PROJECT;
+package PROJECT.Monster_List;
 
 public class Monster_List {
     public static void main(String[] args) {
@@ -12,15 +12,15 @@ public class Monster_List {
         
     }
 
-    public static String MonsterAttackStatus(int mas) {
-        int SlimeA = ;
-        int FoxA = ;
-        int JaejunA = ;
-        int PigA = ;
-        int GoblinA = ;
-        int BossA = ";
+    public static int MonsterAttackStatus(int mas) {
+        int SlimeA = 20;
+        int FoxA = 40;
+        int JaejunA = 35;
+        int PigA = 10;
+        int GoblinA = 45;
+        int BossA = 75;
 
-        return;
+        return mas;
     }
 }
 
